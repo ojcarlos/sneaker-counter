@@ -42,6 +42,17 @@ public class SneakerService {
         }
         return sneakers;
     }
+    public Sneaker create(Sneaker sneaker){
+        return sneaker;
+    }
+    public Sneaker update(Sneaker sneaker){
+        return sneaker;
+    }
+
+    public void delete(Long id){
+        logger.info("deleted" + id);
+    }
+
 
     private Sneaker mockSneaker(int i) {
         Long id = Integer.toUnsignedLong(i);

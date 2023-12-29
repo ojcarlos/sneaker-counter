@@ -4,10 +4,7 @@ import oj.carlos.sneakercounter.entities.Sneaker;
 import oj.carlos.sneakercounter.services.SneakerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
 import java.util.List;
@@ -26,6 +23,23 @@ public class SneakerResources {
     @RequestMapping(value =  "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Sneaker getById(@PathVariable long id){
         return service.findById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST,
+            consumes =  MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Sneaker create(@RequestBody Sneaker sneaker){
+        return service.create(sneaker);
+    }
+    @RequestMapping(method = RequestMethod.PUT,
+            consumes =  MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Sneaker update(@RequestBody Sneaker sneaker){
+        return service.create(sneaker);
+    }
+    @RequestMapping(value =  "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void delete(@PathVariable long id){
+        service.delete(id);
     }
 
 }
