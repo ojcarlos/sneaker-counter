@@ -3,33 +3,32 @@ package oj.carlos.sneakercounter.services;
 import oj.carlos.sneakercounter.entities.Sneaker;
 import oj.carlos.sneakercounter.exceptions.ResourceNotFoundException;
 import oj.carlos.sneakercounter.repositories.SneakerRepository;
+import oj.carlos.sneakercounter.vo.v1.SneakerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
+
 
 @Service
 public class SneakerService {
     @Autowired
     private SneakerRepository repository;
-    public Sneaker findById(Long id) {
+    public SneakerVO findById(Long id) {
 
 
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found"));
 
     }
-    public List<Sneaker> findAll(){
+    public List<SneakerVO> findAll(){
         return repository.findAll();
     }
-    public Sneaker create(Sneaker sneaker){
+    public SneakerVO create(SneakerVO sneaker){
         return repository.save(sneaker);
     }
-    public Sneaker update(Sneaker sneaker){
-        Sneaker sneaker1 = repository.findById(sneaker.getId())
+    public SneakerVO update(SneakerVO sneaker){
+        SneakerVO sneaker1 = repository.findById(sneaker.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found"));
         sneaker1.setColorWay( sneaker.getColorWay());
         sneaker1.setModel(sneaker.getModel());
@@ -43,7 +42,7 @@ public class SneakerService {
     }
 
     public void delete(Long id){
-        Sneaker sneaker1 = repository.findById(id)
+        SneakerVO sneaker1 = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found"));
         repository.delete(sneaker1);
     }
