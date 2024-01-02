@@ -4,6 +4,7 @@ import oj.carlos.sneakercounter.entities.User;
 import oj.carlos.sneakercounter.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -35,8 +36,10 @@ public class UserResources {
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void delete(@PathVariable long id){
+    public ResponseEntity<?> delete(@PathVariable long id){
+
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 
