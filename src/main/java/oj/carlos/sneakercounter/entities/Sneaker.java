@@ -1,24 +1,39 @@
 package oj.carlos.sneakercounter.entities;
 
+import jakarta.persistence.*;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
-
+@Entity
+@Table(name = "tb_sneaker")
 public class Sneaker implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String model;
+    @Column
     private String colorWay;
-    private Calendar releaseDate;
+    @Column
+    private String releaseDate;
+
+    @Column(length = 1000)
     private String history;
+    @Column
     private String designer;
+    @Column
     private String brand;
+    @Column
     private String collab;
 
     public Sneaker() {
     }
 
-    public Sneaker(Long id, String model, String colorWay, Calendar releaseDate, String history, String designer, String brand, String collab) {
+    public Sneaker(Long id, String model, String colorWay, String releaseDate, String history, String designer, String brand, String collab) {
         this.id = id;
         this.model = model;
         this.colorWay = colorWay;
@@ -53,11 +68,11 @@ public class Sneaker implements Serializable {
         this.colorWay = colorWay;
     }
 
-    public Calendar getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Calendar releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 

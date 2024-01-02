@@ -37,7 +37,7 @@ public class SneakerResources {
     public Sneaker update(@RequestBody Sneaker sneaker){
         return service.create(sneaker);
     }
-    @RequestMapping(value =  "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value =  "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable long id){
         service.delete(id);
     }
