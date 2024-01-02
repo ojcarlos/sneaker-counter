@@ -17,6 +17,8 @@ public class Sneaker implements Serializable {
     @Column
     private String model;
     @Column
+    private String imgUrl;
+    @Column
     private String colorWay;
     @Column
     private String releaseDate;
@@ -30,10 +32,18 @@ public class Sneaker implements Serializable {
     @Column
     private String collab;
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     public Sneaker() {
     }
 
-    public Sneaker(Long id, String model, String colorWay, String releaseDate, String history, String designer, String brand, String collab) {
+    public Sneaker(Long id, String model, String colorWay, String releaseDate, String history, String designer, String brand, String collab, String imgUrl) {
         this.id = id;
         this.model = model;
         this.colorWay = colorWay;
@@ -42,6 +52,7 @@ public class Sneaker implements Serializable {
         this.designer = designer;
         this.brand = brand;
         this.collab = collab;
+        this.imgUrl = imgUrl;
     }
 
     public Long getId() {
