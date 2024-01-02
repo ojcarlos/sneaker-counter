@@ -1,13 +1,12 @@
 package oj.carlos.sneakercounter.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
-
+@Entity
+@Table(name = "tb_User")
 public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
