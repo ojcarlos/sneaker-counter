@@ -2,6 +2,7 @@ package oj.carlos.sneakercounter.services;
 
 import oj.carlos.sneakercounter.entities.Sneaker;
 import oj.carlos.sneakercounter.exceptions.ResourceNotFoundException;
+import oj.carlos.sneakercounter.mapper.DozerMapper;
 import oj.carlos.sneakercounter.repositories.SneakerRepository;
 import oj.carlos.sneakercounter.vo.v1.SneakerVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,31 +19,36 @@ public class SneakerService {
     public SneakerVO findById(Long id) {
 
 
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found"));
+        Sneaker entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found"));
+        return DozerMapper.parseObject(entity, SneakerVO.class);
 
     }
     public List<SneakerVO> findAll(){
-        return repository.findAll();
-    }
-    public SneakerVO create(SneakerVO sneaker){
-        return repository.save(sneaker);
-    }
-    public SneakerVO update(SneakerVO sneaker){
-        SneakerVO sneaker1 = repository.findById(sneaker.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("No records found"));
-        sneaker1.setColorWay( sneaker.getColorWay());
-        sneaker1.setModel(sneaker.getModel());
-        sneaker1.setReleaseDate(sneaker.getReleaseDate());
-        sneaker1.setHistory(sneaker.getHistory());
-        sneaker1.setDesigner(sneaker.getDesigner());
-        sneaker1.setBrand(sneaker.getBrand());
-        sneaker1.setCollab(sneaker.getCollab());
 
-        return repository.save(sneaker);
+
+        return DozerMapper.parseListObjects(repository.findAll(), SneakerVO.class) ;
+    }
+    public SneakerVO create(SneakerVO sneakerVO){
+        Sneaker entity = DozerMapper.parseObject(sneakerVO, Sneaker.class);
+        return DozerMapper.parseObject(repository.save(entity), SneakerVO.class );
+    }
+    public SneakerVO update(SneakerVO sneakerVO){
+
+        Sneaker sneaker1 = repository.findById(sneakerVO.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("No records found"));
+        sneaker1.setColorWay( sneakerVO.getColorWay());
+        sneaker1.setModel(sneakerVO.getModel());
+        sneaker1.setReleaseDate(sneakerVO.getReleaseDate());
+        sneaker1.setHistory(sneakerVO.getHistory());
+        sneaker1.setDesigner(sneakerVO.getDesigner());
+        sneaker1.setBrand(sneakerVO.getBrand());
+        sneaker1.setCollab(sneakerVO.getCollab());
+
+        return DozerMapper.parseObject(repository.save(sneaker1), SneakerVO.class );
     }
 
     public void delete(Long id){
-        SneakerVO sneaker1 = repository.findById(id)
+        Sneaker sneaker1 = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found"));
         repository.delete(sneaker1);
     }

@@ -8,7 +8,6 @@ import java.util.Objects;
 
 
 public class SneakerVO implements Serializable {
-    @Serial
     private static final long serialVersionUID = 1L;
 
     private Long id;
@@ -121,11 +120,11 @@ public class SneakerVO implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof SneakerVO sneakerVO)) return false;
-        return Objects.equals(id, sneakerVO.id);
+        return Objects.equals(model, sneakerVO.model) && Objects.equals(colorWay, sneakerVO.colorWay) && Objects.equals(brand, sneakerVO.brand);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(model, colorWay, brand);
     }
 }

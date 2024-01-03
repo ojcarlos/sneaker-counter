@@ -123,11 +123,11 @@ public class Sneaker implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Sneaker sneaker)) return false;
-        return id == sneaker.id;
+        return Objects.equals(model, sneaker.model) && Objects.equals(colorWay, sneaker.colorWay) && Objects.equals(brand, sneaker.brand);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(model, colorWay, brand);
     }
 }
