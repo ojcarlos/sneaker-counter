@@ -36,7 +36,7 @@ public class MockSneaker {
         Sneaker sneaker = new Sneaker();
         sneaker.setCollab("collab Test" + number);
         sneaker.setBrand("brand Test" + number);
-        sneaker.setDesigner("Designer test" + number);
+        sneaker.setDesigner("Designer Test" + number);
         sneaker.setId(number.longValue());
         sneaker.setHistory("history Test" + number);
         sneaker.setModel("Model Test" + number);
@@ -50,7 +50,7 @@ public class MockSneaker {
         SneakerVO sneaker = new SneakerVO();
         sneaker.setCollab("collab Test" + number);
         sneaker.setBrand("brand Test" + number);
-        sneaker.setDesigner("Designer test" + number);
+        sneaker.setDesigner("Designer Test" + number);
         sneaker.setId(number.longValue());
         sneaker.setHistory("history Test" + number);
         sneaker.setModel("Model Test" + number);
