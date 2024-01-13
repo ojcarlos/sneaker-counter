@@ -35,7 +35,7 @@ public class SneakerResources {
     @PutMapping(consumes =  MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public SneakerVO update(@RequestBody SneakerVO sneaker){
-        return service.create(sneaker);
+        return service.update(sneaker);
     }
     @DeleteMapping(value =  "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> delete(@PathVariable long id){
