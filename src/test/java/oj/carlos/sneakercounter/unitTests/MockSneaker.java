@@ -4,6 +4,7 @@ import oj.carlos.sneakercounter.entities.Sneaker;
 import oj.carlos.sneakercounter.vo.v1.SneakerVO;
 import org.junit.jupiter.api.Test;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class MockSneaker {
         sneaker.setId(number.longValue());
         sneaker.setHistory("history Test" + number);
         sneaker.setModel("Model Test" + number);
-        sneaker.setReleaseDate("Data Test" + number);
+        sneaker.setReleaseDate(Instant.parse("2019-06-20T19:53:07Z"));
         sneaker.setColorWay("Colorway Test" + number);
         sneaker.setImgUrl("img Test" + number);
         return sneaker;
@@ -54,7 +55,7 @@ public class MockSneaker {
         sneaker.setId(number.longValue());
         sneaker.setHistory("history Test" + number);
         sneaker.setModel("Model Test" + number);
-        sneaker.setReleaseDate("Data Test" + number);
+        sneaker.setReleaseDate(Instant.parse("2019-06-20T19:53:07Z"));
         sneaker.setColorWay("Colorway Test" + number);
         sneaker.setImgUrl("img Test" + number);
         return sneaker;

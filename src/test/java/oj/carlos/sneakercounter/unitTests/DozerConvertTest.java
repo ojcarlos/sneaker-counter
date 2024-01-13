@@ -99,7 +99,7 @@ public class DozerConvertTest {
         assertEquals("history Test0", output0.getHistory());
         assertEquals("img Test0", output0.getImgUrl());
         assertEquals("Model Test0", output0.getModel());
-        assertEquals("Data Test0", output0.getReleaseDate());
+        assertEquals("2019-06-20T19:53:07Z", output0.getReleaseDate());
 
         Sneaker output7 = outputList.get(7);
 

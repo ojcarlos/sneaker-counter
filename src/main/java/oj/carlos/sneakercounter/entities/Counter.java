@@ -16,17 +16,17 @@ public class Counter implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    private CounterPK id;
-    private Instant purchase;
+    private CounterPK id = new CounterPK();
+
     private Integer counter;
     public Counter(){
 
     }
 
-    public Counter(Sneaker sneaker, User user, Instant purchase, Integer counter) {
+    public Counter(Sneaker sneaker, User user, Integer counter) {
         id.setOwner(user);
         id.setSneaker(sneaker);
-        this.purchase = purchase;
+
         this.counter = counter;
     }
 
@@ -46,13 +46,7 @@ public class Counter implements Serializable {
         id.setSneaker(sneaker);
     }
 
-    public Instant getPurchase() {
-        return purchase;
-    }
 
-    public void setPurchase(Instant purchase) {
-        this.purchase = purchase;
-    }
 
     public Integer getCounter() {
         return counter;

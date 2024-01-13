@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Calendar;
 import java.util.Objects;
 @Entity
@@ -21,7 +22,7 @@ public class Sneaker implements Serializable {
     @Column
     private String colorWay;
     @Column
-    private String releaseDate;
+    private Instant releaseDate;
 
     @Column(length = 1000)
     private String history;
@@ -43,7 +44,7 @@ public class Sneaker implements Serializable {
     public Sneaker() {
     }
 
-    public Sneaker(Long id, String model, String colorWay, String releaseDate, String history, String designer, String brand, String collab, String imgUrl) {
+    public Sneaker(Long id, String model, String colorWay, Instant releaseDate, String history, String designer, String brand, String collab, String imgUrl) {
         this.id = id;
         this.model = model;
         this.colorWay = colorWay;
@@ -79,11 +80,11 @@ public class Sneaker implements Serializable {
         this.colorWay = colorWay;
     }
 
-    public String getReleaseDate() {
+    public Instant getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(Instant releaseDate) {
         this.releaseDate = releaseDate;
     }
 
