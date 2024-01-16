@@ -27,7 +27,7 @@ public class TestConfig implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Sneaker sneaker1 = new Sneaker(null,"JORDAN17", "CINZENTO CEMENT",
-                Instant.parse("2019-06-20T19:53:07Z"),
+                "2019-06-20T19:53:07Z",
                 "Lançadas em 1988, as " +
                 "Air Jordan 3 foram o primeiro design de Tinker Hatfield nas suas três décadas de " +
                 "colaboração com o legado Jordan. A partir desta parceria, Tinker criou o agora " +
@@ -35,7 +35,7 @@ public class TestConfig implements CommandLineRunner {
                 "de sapatilhas mais notáveis em todo o mundo.", "TINKER HATFIELD","JORDAN",
                 "", "");
         Sneaker sneaker2 = new Sneaker(null,"JORDAN01", "CHICAGO",
-                Instant.parse("2019-06-20T19:53:07Z"),
+                "2019-06-20T19:53:07Z",
                 "Lançadas em 1988, as " +
                         "Air Jordan 3 foram o primeiro design de Tinker Hatfield nas suas três décadas de " +
                         "colaboração com o legado Jordan. A partir desta parceria, Tinker criou o agora " +
@@ -43,7 +43,7 @@ public class TestConfig implements CommandLineRunner {
                         "de sapatilhas mais notáveis em todo o mundo.", "TINKER HATFIELD","JORDAN",
                 "", "");
         Sneaker sneaker3 = new Sneaker(null,"JORDAN02", "BLUE",
-                Instant.parse("2019-06-20T19:53:07Z"),
+                "2019-06-20T19:53:07Z",
                 "Lançadas em 1988, as " +
                         "Air Jordan 3 foram o primeiro design de Tinker Hatfield nas suas três décadas de " +
                         "colaboração com o legado Jordan. A partir desta parceria, Tinker criou o agora " +

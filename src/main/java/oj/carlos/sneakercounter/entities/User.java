@@ -18,7 +18,7 @@ public class User implements Serializable {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "id.owner")
+    @OneToMany(mappedBy = "id.user")
     public Set<Counter> sneakers = new HashSet<>();
 
 
@@ -68,8 +68,6 @@ public class User implements Serializable {
     public Set<Counter> getSneakers() {
         return sneakers;
     }
-
-
 
     @Override
     public boolean equals(Object o) {

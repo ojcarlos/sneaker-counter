@@ -1,12 +1,15 @@
 package oj.carlos.sneakercounter.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_sneaker")
 public class Sneaker implements Serializable {
@@ -22,7 +25,7 @@ public class Sneaker implements Serializable {
     @Column
     private String colorWay;
     @Column
-    private Instant releaseDate;
+    private String releaseDate;
 
     @Column(length = 1000)
     private String history;
@@ -40,11 +43,13 @@ public class Sneaker implements Serializable {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-
+@JsonIgnore
+    @OneToMany(mappedBy = "id.sneaker")
+    private Set<Counter> owners = new HashSet<>();
     public Sneaker() {
     }
 
-    public Sneaker(Long id, String model, String colorWay, Instant releaseDate, String history, String designer, String brand, String collab, String imgUrl) {
+    public Sneaker(Long id, String model, String colorWay, String releaseDate, String history, String designer, String brand, String collab, String imgUrl) {
         this.id = id;
         this.model = model;
         this.colorWay = colorWay;
@@ -80,11 +85,11 @@ public class Sneaker implements Serializable {
         this.colorWay = colorWay;
     }
 
-    public Instant getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Instant releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -120,15 +125,19 @@ public class Sneaker implements Serializable {
         this.collab = collab;
     }
 
+    public Set<Counter> getOwners() {
+        return owners;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Sneaker sneaker)) return false;
-        return Objects.equals(model, sneaker.model) && Objects.equals(colorWay, sneaker.colorWay) && Objects.equals(brand, sneaker.brand);
+        return Objects.equals(id, sneaker.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(model, colorWay, brand);
+        return Objects.hash(id);
     }
 }

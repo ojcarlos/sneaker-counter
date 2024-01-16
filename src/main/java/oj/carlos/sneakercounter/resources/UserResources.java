@@ -18,21 +18,21 @@ public class UserResources {
     @Autowired
     private UserService service;
     @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<UserVO> findAll(){
+    public List<User> findAll(){
         return  service.findAll();
     }
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserVO getById(@PathVariable long id){
+    public User getById(@PathVariable long id){
         return service.findById(id);
     }
     @PostMapping(consumes =  MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserVO create(@RequestBody UserVO user){
+    public User create(@RequestBody User user){
         return service.create(user);
     }
     @PutMapping(consumes =  MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserVO update(@RequestBody UserVO user){
+    public User update(@RequestBody User user){
         return service.update(user);
     }
 

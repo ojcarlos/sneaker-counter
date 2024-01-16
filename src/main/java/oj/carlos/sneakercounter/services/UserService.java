@@ -18,28 +18,25 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public UserVO findById(Long id) {
+    public User findById(Long id) {
 
 
-        User entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found"));
-        return DozerMapper.parseObject(entity, UserVO.class);
+        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found"));
 
     }
-    public List<UserVO> findAll(){
-
-        return DozerMapper.parseListObjects(repository.findAll(),UserVO.class);
+    public List<User> findAll(){
+        return repository.findAll();
     }
-    public UserVO create(UserVO user){
-        User entity = DozerMapper.parseObject(user, User.class);
-        return DozerMapper.parseObject(repository.save(entity), UserVO.class);
+    public User create(User user){
+        return repository.save(user);
     }
-    public UserVO update(UserVO user){
+    public User update(User user){
         User user1 = repository.findById(user.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found"));
         user1.setEmail(user.getEmail());
         user1.setName(user.getName());
         user1.setPassword(user.getPassword());
-        return DozerMapper.parseObject(repository.save(user1), UserVO.class);
+        return repository.save(user);
     }
 
     public void delete(Long id){

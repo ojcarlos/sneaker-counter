@@ -1,5 +1,6 @@
 package oj.carlos.sneakercounter.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -7,7 +8,6 @@ import oj.carlos.sneakercounter.entities.PK.CounterPK;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 @Entity
@@ -24,21 +24,23 @@ public class Counter implements Serializable {
     }
 
     public Counter(Sneaker sneaker, User user, Integer counter) {
-        id.setOwner(user);
+        id.setUser(user);
         id.setSneaker(sneaker);
-
         this.counter = counter;
     }
 
-    public User getOwner(){
-        return id.getOwner();
+    @JsonIgnore
+    public User getUser(){
+        return id.getUser();
     }
 
-    public void setOwner(User user){
-        id.setOwner(user);
+    public void setUser(User user){
+        id.setUser(user);
     }
+
 
     public Sneaker getSneaker(){
+
         return id.getSneaker();
     }
 
@@ -52,8 +54,8 @@ public class Counter implements Serializable {
         return counter;
     }
 
-    public void addCounter() {
-        this.counter++;
+    public void addCounter(int n) {
+        this.counter = this.counter + n;
     }
 
     @Override

@@ -1,8 +1,12 @@
 package oj.carlos.sneakercounter.vo.v1;
 
+import oj.carlos.sneakercounter.entities.Counter;
+
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class UserVO implements Serializable {
     @Serial
@@ -11,15 +15,18 @@ public class UserVO implements Serializable {
     private String name;
     private String email;
     private String password;
+    public Set<Counter> sneakers = new HashSet<>();
+
 
     public UserVO() {
     }
 
-    public UserVO(Long id, String name, String email, String password) {
+    public UserVO(Long id, String name, String email, String password, Set<Counter> sneakers) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.sneakers = sneakers;
     }
 
     public Long getId() {
@@ -52,6 +59,10 @@ public class UserVO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Counter> getSneakers() {
+        return sneakers;
     }
 
     @Override

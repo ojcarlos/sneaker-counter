@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 
@@ -19,7 +18,7 @@ public class SneakerVO implements Serializable {
 
     private String colorWay;
 
-    private Instant releaseDate;
+    private String releaseDate;
 
 
     private String history;
@@ -41,7 +40,7 @@ public class SneakerVO implements Serializable {
     public SneakerVO() {
     }
 
-    public SneakerVO(Long id, String model, String colorWay, Instant releaseDate, String history, String designer, String brand, String collab, String imgUrl) {
+    public SneakerVO(Long id, String model, String colorWay, String releaseDate, String history, String designer, String brand, String collab, String imgUrl) {
         this.id = id;
         this.model = model;
         this.colorWay = colorWay;
@@ -77,11 +76,11 @@ public class SneakerVO implements Serializable {
         this.colorWay = colorWay;
     }
 
-    public Instant getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Instant releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 

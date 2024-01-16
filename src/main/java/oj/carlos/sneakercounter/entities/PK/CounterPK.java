@@ -10,25 +10,27 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 @Embeddable
-public class CounterPK implements Serializable {
-    @Serial
+public class CounterPK implements Serializable  {
+
     private static final long serialVersionUID = 1L;
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User owner;
+    @JoinColumn(name = "user_id")
+    private User user;
     @ManyToOne
     @JoinColumn(name = "sneaker_id")
     private Sneaker sneaker;
 
-    public User getOwner() {
-        return owner;
+    public User getUser() {
+
+        return user;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Sneaker getSneaker() {
+
         return sneaker;
     }
 
@@ -40,11 +42,11 @@ public class CounterPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CounterPK counterPK)) return false;
-        return Objects.equals(owner, counterPK.owner) && Objects.equals(sneaker, counterPK.sneaker);
+        return Objects.equals(user, counterPK.user) && Objects.equals(sneaker, counterPK.sneaker);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(owner, sneaker);
+        return Objects.hash(user, sneaker);
     }
 }
