@@ -16,35 +16,35 @@ import java.util.List;
 public class SneakerService {
     @Autowired
     private SneakerRepository repository;
-    public SneakerVO findById(Long id) {
+    public Sneaker findById(Long id) {
 
 
         Sneaker entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found"));
-        return DozerMapper.parseObject(entity, SneakerVO.class);
+        return entity;
 
     }
-    public List<SneakerVO> findAll(){
+    public List<Sneaker> findAll(){
 
 
-        return DozerMapper.parseListObjects(repository.findAll(), SneakerVO.class) ;
+        return repository.findAll();
     }
-    public SneakerVO create(SneakerVO sneakerVO){
-        Sneaker entity = DozerMapper.parseObject(sneakerVO, Sneaker.class);
-        return DozerMapper.parseObject(repository.save(entity), SneakerVO.class );
-    }
-    public SneakerVO update(SneakerVO sneakerVO){
+    public Sneaker create(Sneaker sneaker){
 
-        Sneaker sneaker1 = repository.findById(sneakerVO.getId())
+        return repository.save(sneaker);
+    }
+    public Sneaker update(Sneaker sneaker){
+
+        Sneaker sneaker1 = repository.findById(sneaker.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found"));
-        sneaker1.setColorWay( sneakerVO.getColorWay());
-        sneaker1.setModel(sneakerVO.getModel());
-        sneaker1.setReleaseDate(sneakerVO.getReleaseDate());
-        sneaker1.setHistory(sneakerVO.getHistory());
-        sneaker1.setDesigner(sneakerVO.getDesigner());
-        sneaker1.setBrand(sneakerVO.getBrand());
-        sneaker1.setCollab(sneakerVO.getCollab());
+        sneaker1.setColorWay( sneaker.getColorWay());
+        sneaker1.setModel(sneaker.getModel());
+        sneaker1.setReleaseDate(sneaker.getReleaseDate());
+        sneaker1.setHistory(sneaker.getHistory());
+        sneaker1.setDesigner(sneaker.getDesigner());
+        sneaker1.setBrand(sneaker.getBrand());
+        sneaker1.setCollab(sneaker.getCollab());
 
-        return DozerMapper.parseObject(repository.save(sneaker1), SneakerVO.class );
+        return repository.save(sneaker1);
     }
 
     public void delete(Long id){

@@ -18,23 +18,23 @@ public class SneakerResources {
     private SneakerService service;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<SneakerVO> findAll(){
+    public List<Sneaker> findAll(){
         return service.findAll();
     }
 
     @GetMapping(value =  "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public SneakerVO getById(@PathVariable long id){
+    public Sneaker getById(@PathVariable long id){
         return service.findById(id);
     }
 
     @PostMapping(consumes =  MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public SneakerVO create(@RequestBody SneakerVO sneaker){
+    public Sneaker create(@RequestBody Sneaker sneaker){
         return service.create(sneaker);
     }
     @PutMapping(consumes =  MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public SneakerVO update(@RequestBody SneakerVO sneaker){
+    public Sneaker update(@RequestBody Sneaker sneaker){
         return service.update(sneaker);
     }
     @DeleteMapping(value =  "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -17,10 +17,9 @@ public class CounterResources {
 
     @Autowired
     private CounterService service;
-    @PostMapping(consumes =  MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public Counter create(@RequestBody Counter counter){
-        return service.create(counter);
+    @PostMapping(value = "/{userId}/{sneakerId}")
+    public Counter create(@PathVariable long userId, @PathVariable long sneakerId){
+        return service.create(userId, sneakerId);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Counter> findALL(){

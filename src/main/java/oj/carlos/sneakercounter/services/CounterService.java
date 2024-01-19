@@ -2,6 +2,7 @@ package oj.carlos.sneakercounter.services;
 
 import oj.carlos.sneakercounter.entities.Counter;
 import oj.carlos.sneakercounter.entities.PK.CounterPK;
+import oj.carlos.sneakercounter.entities.Sneaker;
 import oj.carlos.sneakercounter.entities.User;
 import oj.carlos.sneakercounter.exceptions.ResourceNotFoundException;
 import oj.carlos.sneakercounter.repositories.CounterRepository;
@@ -15,13 +16,19 @@ public class CounterService
 {
     @Autowired
     private CounterRepository repository;
+    @Autowired
+    private SneakerService sneakerService;
+    @Autowired private UserService userService;
 
     public List<Counter> findAll(){
 
         return repository.findAll();
 
     }
-    public Counter create(Counter counter){
+    public Counter create(Long userId, Long sneakerId){
+        Sneaker sneaker = sneakerService.findById(sneakerId);
+        User user = userService.findById(userId);
+        Counter counter = new Counter(sneaker, user, 0);
         return repository.save(counter);
     }
     public void update(Long userId, Long sneakerId, int n){
