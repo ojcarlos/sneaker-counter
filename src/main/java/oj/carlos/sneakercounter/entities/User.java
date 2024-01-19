@@ -68,6 +68,16 @@ public class User implements Serializable {
     public Set<Counter> getSneakers() {
         return sneakers;
     }
+    public int addCounter(Sneaker sneaker, int c){
+        for (Counter x : sneakers){
+            if (x.getSneaker().equals(sneaker)){
+                x.setCounter(c);
+                return x.getCounter();
+            }
+
+        }
+        return 0;
+    }
 
     @Override
     public boolean equals(Object o) {

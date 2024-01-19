@@ -39,6 +39,7 @@ public class Counter implements Serializable {
     }
 
 
+
     public Sneaker getSneaker(){
 
         return id.getSneaker();
@@ -54,8 +55,8 @@ public class Counter implements Serializable {
         return counter;
     }
 
-    public void addCounter(int n) {
-        this.counter = this.counter + n;
+    public void setCounter(int n) {
+        this.counter = n;
     }
 
     @Override

@@ -19,8 +19,6 @@ public class UserService {
     private UserRepository repository;
 
     public User findById(Long id) {
-
-
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found"));
 
     }
@@ -44,4 +42,5 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("No records found"));
         repository.delete(user1);
     }
+
 }

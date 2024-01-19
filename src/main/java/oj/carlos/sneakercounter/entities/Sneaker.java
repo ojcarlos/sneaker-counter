@@ -43,7 +43,7 @@ public class Sneaker implements Serializable {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-@JsonIgnore
+
     @OneToMany(mappedBy = "id.sneaker")
     private Set<Counter> owners = new HashSet<>();
     public Sneaker() {
@@ -125,8 +125,15 @@ public class Sneaker implements Serializable {
         this.collab = collab;
     }
 
-    public Set<Counter> getOwners() {
-        return owners;
+    @JsonIgnore
+    public Set<User> getOwners() {
+        Set<User> set = new HashSet<>();
+        for (Counter x : owners){
+            set.add(x.getUser());
+
+        }
+
+        return set;
     }
 
     @Override
